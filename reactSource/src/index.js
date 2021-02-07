@@ -46,26 +46,37 @@ class Count extends React.Component {
   }
   componentDidMount() {
     console.log("componentDidMount");
+    setInterval(()=>{
+        this.setState({ count: this.state.count+1 })
+    },2000)
   }
-  handleAddCount() {
-    this.setState({
-      count: this.state.count++,
-    });
+  shouldComponentUpdate(){
+      return true
   }
+
+  componentDidUpdate(){
+      console.log(console.log('Count componentDidUpdate'))
+  }
+//   handleAddCount() {
+//     this.setState({
+//       count: this.state.count++,
+//     });
+//   }
   render() {
-      console.log(this,'this1')
-    let p = React.createElement(
-      "p",
-      { style: { color: "red" } },
-      this.props.name,
-      this.state.count
-    );
-    let button = React.createElement(
-      "button",
-      {  id: "counter", onClick: this.handleAddCount.bind(this) },
-      "+"
-    );
-    return React.createElement("div", {}, p,button);
+    //   console.log(this,'this1')
+    // let p = React.createElement(
+    //   "p",
+    //   { style: { color: "red" } },
+    //   this.props.name,
+    //   this.state.count
+    // );
+    // let button = React.createElement(
+    //   "button",
+    //   {  id: "counter", onClick: this.handleAddCount.bind(this) },
+    //   "+"
+    // );
+    // return React.createElement("div", {}, p,button);
+    return this.state.count
   }
 }
 /*#__PURE__ 自定义组件*/
